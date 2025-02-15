@@ -15,7 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category" element={<Category />} />
-        <Route path="/search" element={<Search />} />
+        {/* <Route path="/search" element={<Search />} /> */}
+        <Route path="/search/:searchQuery" element={<Search />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </div>

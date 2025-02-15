@@ -1,51 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Grid, Typography, CircularProgress, TextField, Button } from "@mui/material";
-import NewsCard from "./NewsCard";  // Import the NewsCard component
+import NewsCard from "./NewsCard"; 
+
 
 const SearchPage = () => {
-  const { searchQuery } = useParams();  // Get the search query from the URL
-  const navigate = useNavigate();
+  const { searchQuery } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchInput, setSearchInput] = useState(searchQuery || "");
 
-  const fetchSearchResults = async () => {
-    setLoading(true);
-    setError(null);
-
-    if (!searchQuery.trim()) {
+  useEffect(() => {
+   
+    if (!searchQuery || !searchQuery.trim()) {
       setArticles([]);
       setLoading(false);
       return;
     }
-
-    try {
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=b993d180fa78484d8215ec096e341438`
-      );
-      const data = await response.json();
-      setArticles(data.articles);
-    } catch (err) {
-      setError("Failed to fetch articles");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (searchQuery) {
-      fetchSearchResults();
-    }
+    
+    setLoading(true);
+    fetch(`https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=b993d180fa78484d8215ec096e341438`)
+      .then((res) => res.json())
+      .then((data) => {
+        setArticles(data.articles || []);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
   }, [searchQuery]);
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    if (searchInput.trim()) {
-      navigate(`/search/${searchInput.trim()}`);
-    }
-  };
 
   return (
     <Container>
