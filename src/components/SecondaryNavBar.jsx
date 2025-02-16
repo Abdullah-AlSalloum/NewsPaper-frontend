@@ -12,7 +12,7 @@ const pages = [
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -22,14 +22,13 @@ function NavBar() {
     setAnchorElNav(null);
   };
 
-  // Function to check if the current path matches the page's path
+  
   const isActive = (path) => location.pathname === path;
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -53,7 +52,7 @@ function NavBar() {
                     to={page.path}
                     sx={{
                       textDecoration: "none",
-                      color: isActive(page.path) ? "blue" : "black" // Highlight active link
+                      color: isActive(page.path) ? "blue" : "black"
                     }}
                   >
                     {page.name}
@@ -71,8 +70,8 @@ function NavBar() {
                 to={page.path}
                 sx={{
                   my: 2,
-                  color: isActive(page.path) ? "blue" : "white", // Highlight active button
-                  borderBottom: isActive(page.path) ? "2px solid blue" : "none", // Optional underline
+                  color: isActive(page.path) ? "blue" : "white",
+                  borderBottom: isActive(page.path) ? "2px solid blue" : "none",
                 }}
               >
                 {page.name}

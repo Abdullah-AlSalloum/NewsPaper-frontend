@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, Button, TextField, Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";  // Use useNavigate instead of useHistory
+import { useNavigate } from "react-router-dom";
 import '../styles/Navbar.css';
 
 const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();  // Use useNavigate hook
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery) {
-      navigate(`/search/${searchQuery}`);  // Use navigate() to redirect
+      navigate(`/search/${searchQuery}`); 
     }
   };
 

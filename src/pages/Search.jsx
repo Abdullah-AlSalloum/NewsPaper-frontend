@@ -1,65 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Container, Grid, Typography, CircularProgress, TextField, Button } from "@mui/material";
-import NewsCard from "./NewsCard"; 
+// Search.js
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Container, Card, CardContent, Typography, CircularProgress } from "@mui/material";
 
+const API_KEY = "b993d180fa78484d8215ec096e341438";
 
-const SearchPage = () => {
-  const { searchQuery } = useParams();
+const Search = () => {
+  const { query } = useParams(); // gets the search query from the URL
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-   
-    if (!searchQuery || !searchQuery.trim()) {
-      setArticles([]);
+    const fetchSearchResults = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
+        );
+        const data = await response.json();
+        setArticles(data.articles);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
       setLoading(false);
-      return;
-    }
-    
-    setLoading(true);
-    fetch(`https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=b993d180fa78484d8215ec096e341438`)
-      .then((res) => res.json())
-      .then((data) => {
-        setArticles(data.articles || []);
-      })
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
-  }, [searchQuery]);
+    };
+
+    fetchSearchResults();
+  }, [query]);
 
   return (
     <Container>
-      <form onSubmit={handleSearch}>
-        <TextField
-          variant="outlined"
-          label="Search"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <Button variant="contained" type="submit">Search</Button>
-      </form>
-      
-      <Typography variant="h4" gutterBottom>
-        Search Results for "{searchQuery}"
+      <Typography variant="h4" sx={{ my: 2 }}>
+        Search Results for "{query}"
       </Typography>
-      {loading && <CircularProgress />}
-      {error && <Typography variant="h6" color="error">{error}</Typography>}
-      {articles.length === 0 && !loading && !error && (
-        <Typography>No articles found for "{searchQuery}"</Typography>
-      )}
-      {articles.length > 0 && (
-        <Grid container spacing={3}>
-          {articles.map((article, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <NewsCard article={article} />
-            </Grid>
-          ))}
-        </Grid>
+      {loading ? (
+        <CircularProgress />
+      ) : articles.length > 0 ? (
+        articles.map((article, index) => (
+          <Card key={index} sx={{ mb: 2 }}>
+            <CardContent>
+              <Typography variant="h6">{article.title}</Typography>
+              <Typography variant="body2" color="textSecondary">
+                {article.description || "No description available."}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))
+      ) : (
+        <Typography>No articles found.</Typography>
       )}
     </Container>
   );
 };
 
-export default SearchPage;
+export default Search;

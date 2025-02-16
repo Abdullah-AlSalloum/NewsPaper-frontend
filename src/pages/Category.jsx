@@ -10,7 +10,7 @@ function Category(){
      const [loading, setLoading] = useState(true);
      const [category, setCategory] = useState("business");
 
-     const { categoryParam } = useParams(); // To get category from URL if necessary
+     const { categoryParam } = useParams();
 
   useEffect(() => {
     setLoading(true);
