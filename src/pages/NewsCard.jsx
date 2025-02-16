@@ -1,9 +1,11 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 
+// NewsCard component: displays a news article with an image, title, description, and a "Read More" button.
 const NewsCard = ({ article }) => {
   return (
     <Card>
+      {/* Render the article image only if a valid image URL exists */}
       {article.urlToImage && (
         <CardMedia
           component="img"
@@ -12,6 +14,7 @@ const NewsCard = ({ article }) => {
           image={article.urlToImage}
         />
       )}
+      {/* Display article details and a button linking to the full article */}
       <CardContent>
         <Typography variant="h6">{article.title}</Typography>
         <Typography variant="body2" color="textSecondary" paragraph>

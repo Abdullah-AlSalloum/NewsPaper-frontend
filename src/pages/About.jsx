@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <Container maxWidth="md">
+      {/* Personal Introduction Section */}
       <Box sx={{ textAlign: "center", mt: 5 }}>
-        
         <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
           Abdullah AL SALLOUM
         </Typography>
@@ -18,7 +18,7 @@ const About = () => {
         </Typography>
       </Box>
 
-      
+      {/* Education Section */}
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Education
@@ -33,7 +33,7 @@ const About = () => {
         </List>
       </Box>
 
-      
+      {/* Experience Section */}
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Experience
@@ -53,7 +53,7 @@ const About = () => {
         </List>
       </Box>
 
-      
+      {/* Skills Section */}
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Skills
@@ -83,7 +83,7 @@ const About = () => {
         </Grid>
       </Box>
 
-      
+      {/* Certifications Section */}
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Certifications
@@ -107,7 +107,7 @@ const About = () => {
         </List>
       </Box>
 
-     
+      {/* Projects Section */}
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Projects
@@ -147,7 +147,7 @@ const About = () => {
         </Paper>
       </Box>
 
-      
+      {/* Contact Section */}
       <Box sx={{ textAlign: "center", mt: 5 }}>
         <Divider sx={{ mb: 2 }} />
         <Typography variant="h6" color="text.secondary">

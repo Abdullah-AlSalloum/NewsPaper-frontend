@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation } from "react-router-dom";
 import '../styles/Navbar.css';
 
+// Define the pages to be displayed in the navigation menu
 const pages = [
   { name: "Home", path: "/" },
   { name: "Category", path: "/category" },
@@ -11,24 +12,29 @@ const pages = [
 ];
 
 function NavBar() {
+  // State to manage the mobile menu anchor element
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  // Get the current location to highlight the active menu item
   const location = useLocation();
 
+  // Open mobile menu
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
+  // Close mobile menu
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  
+  // Check if the current path matches the page path for active styling
   const isActive = (path) => location.pathname === path;
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Mobile Menu (visible on extra small screens) */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -62,6 +68,7 @@ function NavBar() {
             </Menu>
           </Box>
 
+          {/* Desktop Menu (visible on medium and larger screens) */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: "center" }}>
             {pages.map((page) => (
               <Button
