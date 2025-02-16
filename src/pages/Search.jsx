@@ -1,4 +1,3 @@
-// Search.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Card, CardContent, Typography, CircularProgress } from "@mui/material";
@@ -6,7 +5,7 @@ import { Container, Card, CardContent, Typography, CircularProgress } from "@mui
 const API_KEY = "b993d180fa78484d8215ec096e341438";
 
 const Search = () => {
-  const { query } = useParams(); // gets the search query from the URL
+  const { query } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
