@@ -6,6 +6,7 @@ import Search from "./pages/Search";
 import About from "./pages/About";
 import NavBar from "./components/NavBar";
 import SecondaryNavBar from "./components/secondaryNavBar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/search/:searchQuery" element={<Search />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,21 @@
+.footer-container {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0; 
+    padding: 10px 0;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #333; 
+}

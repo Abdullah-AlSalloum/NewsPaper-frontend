@@ -6,12 +6,7 @@ const About = () => {
   return (
     <Container maxWidth="md">
       <Box sx={{ textAlign: "center", mt: 5 }}>
-        {/* Profile Section */}
-        <Avatar
-          alt="Abdullah AL SALLOUM"
-          src="/path/to/your-profile-pic.jpg"
-          sx={{ width: 150, height: 150, marginBottom: 2 }}
-        />
+        
         <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
           Abdullah AL SALLOUM
         </Typography>
@@ -23,7 +18,7 @@ const About = () => {
         </Typography>
       </Box>
 
-      {/* Education Section */}
+      
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Education
@@ -38,7 +33,7 @@ const About = () => {
         </List>
       </Box>
 
-      {/* Work Experience Section */}
+      
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Experience
@@ -58,7 +53,7 @@ const About = () => {
         </List>
       </Box>
 
-      {/* Skills Section */}
+      
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Skills
@@ -88,7 +83,7 @@ const About = () => {
         </Grid>
       </Box>
 
-      {/* Certifications Section */}
+      
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Certifications
@@ -112,7 +107,7 @@ const About = () => {
         </List>
       </Box>
 
-      {/* Projects Section */}
+     
       <Box sx={{ mb: 5 }}>
         <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
           Projects
@@ -152,7 +147,7 @@ const About = () => {
         </Paper>
       </Box>
 
-      {/* Contact Information Section */}
+      
       <Box sx={{ textAlign: "center", mt: 5 }}>
         <Divider sx={{ mb: 2 }} />
         <Typography variant="h6" color="text.secondary">
